@@ -1,6 +1,13 @@
-import './index.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import {
+  Box,
+  Button,
+  Input,
+  Heading,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import MallSolar from './contracts/MallSolar.json';
 
 const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
@@ -12,60 +19,78 @@ function App() {
   const [energy, setEnergy] = useState('');
 
   useEffect(() => {
-    console.log('Contract address is', CONTRACT_ADDRESS);
+    console.log('✅ Contract Address:', CONTRACT_ADDRESS);
   }, []);
 
   const connect = async () => {
-    if (!window.ethereum) return alert("Please install MetaMask");
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = await provider.getSigner();
-    const addr = await signer.getAddress();
-    const c = new ethers.Contract(CONTRACT_ADDRESS, MallSolar.abi, signer);
-    setAccount(addr);
-    setContract(c);
+    if (!window.ethereum) return alert("请先安装 MetaMask 插件");
+
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = await provider.getSigner();
+      const addr = await signer.getAddress();
+      const c = new ethers.Contract(CONTRACT_ADDRESS, MallSolar.abi, signer);
+      setAccount(addr);
+      setContract(c);
+    } catch (err) {
+      console.error(err);
+      alert("连接失败: " + err.message);
+    }
   };
 
   const register = async () => {
-    if (!location || !energy) return alert("Please fill all fields");
+    if (!location || !energy) {
+      return alert("请填写所有字段");
+    }
     try {
       const tx = await contract.registerAsset(location, Number(energy));
       await tx.wait();
-      alert("✅ Asset registered!");
+      alert("✅ 资产已成功注册！");
     } catch (err) {
       console.error(err);
-      alert("Transaction failed: " + err.message);
+      alert("注册失败: " + err.message);
     }
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1 className="text-4xl font-bold text-center text-blue-1200">
-        MallSolar Web3 MVP
-      </h1>
+    <Box p={6}
+    maxW="md"
+    mx="auto"
+    minH="20vh"
+    display="grid"
+    placeItems="center">
+      <Heading mb={6} textAlign="center" color="teal.500">
+        MallSolar Web3
+      </Heading>
+
       {account ? (
-        <>
-          <p>Connected: {account}</p>
-          <input
-            placeholder="Location"
+        <VStack spacing={4}>
+          <Text color="gray.600">已连接: {account}</Text>
+
+          <Input
+            placeholder="位置（Location）"
             value={location}
-            onChange={e => setLocation(e.target.value)}
-            style={{ padding: 8, marginBottom: 10 }}
-          /><br />
-          <input
-            placeholder="Energy (kWh)"
+            onChange={(e) => setLocation(e.target.value)}
+          />
+
+          <Input
+            placeholder="能源值 (kWh)"
             value={energy}
-            onChange={e => setEnergy(e.target.value)}
-            style={{ padding: 8, marginBottom: 10 }}
-          /><br />
-          <button onClick={register} style={{ padding: 10 }}>Register Asset</button>
-        </>
+            onChange={(e) => setEnergy(e.target.value)}
+          />
+
+          <Button colorScheme="teal" onClick={register}>
+            注册资产
+          </Button>
+        </VStack>
       ) : (
-        <button onClick={connect} style={{ padding: 10 }}>Connect MetaMask</button>
+        <Button colorScheme="blue" onClick={connect}>
+          连接 MetaMask 钱包
+        </Button>
       )}
-    </div>
+    </Box>
   );
 }
 
 export default App;
-
