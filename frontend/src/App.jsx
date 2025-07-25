@@ -9,6 +9,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import MallSolar from './contracts/MallSolar.json';
+import { Link } from 'react-router-dom';
 
 const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
 
@@ -83,12 +84,17 @@ function App() {
           <Button colorScheme="teal" onClick={register}>
             注册资产
           </Button>
+
+          <Button as={Link} to="/market" colorScheme="blue" variant="outline">
+            前往市场页面
+          </Button>
         </VStack>
       ) : (
         <Button colorScheme="blue" onClick={connect}>
           连接 MetaMask 钱包
         </Button>
       )}
+
     </Box>
   );
 }
