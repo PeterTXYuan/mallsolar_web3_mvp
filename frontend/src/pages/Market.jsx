@@ -14,20 +14,36 @@ const dummyData = [
 
 const Market = () => {
   return (
-    <>
-      <Navbar />
-      <MarketHero />
-      <Container maxW="6xl" py={10}>
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap="40px" spacing={10}>
-          {dummyData.map((item, idx) => (
-            <EnergyCard key={idx} {...item} />
-          ))}
-        </SimpleGrid>
-        <Box mt={12}>
-          <App /> {/* 钱包连接和智能合约逻辑 */}
-        </Box>
-      </Container>
-    </>
+    <Box
+      minH="100vh"
+      bgImage="url('/solar.jpg')"
+      bgSize="cover"
+      bgPosition="center"
+      bgRepeat="no-repeat"
+    >
+      <Box
+        p={6}
+        maxW="1400px"
+        mx="auto"
+        backdropFilter="blur(4px)"
+        bg="rgba(255,255,255,0.85)"
+        borderRadius="lg"
+        boxShadow="lg"
+      >
+        <Navbar />
+        <MarketHero />
+        <Container maxW="6xl" py={10}>
+          <SimpleGrid columns={{ base: 1, md: 3 }} gap="40px" spacing={10}>
+            {dummyData.map((item, idx) => (
+              <EnergyCard key={idx} {...item} />
+            ))}
+          </SimpleGrid>
+          <Box mt={12}>
+            <App />
+          </Box>
+        </Container>
+      </Box>
+    </Box>
   );
 };
 

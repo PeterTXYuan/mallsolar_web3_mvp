@@ -7,7 +7,7 @@ const EnergyCard = ({ title, price, location }) => {
       <Text mb={1}>Location: {location}</Text>
       <Text mb={4}>Price: {price} ETH</Text>
       <Stack direction="row">
-        <Button colorScheme="blue" size="sm">Buy</Button>
+        <Button colorScheme="blue" size="sm">Purchase</Button>
         <Button variant="outline" size="sm">More Details</Button>
       </Stack>
     </Box>
