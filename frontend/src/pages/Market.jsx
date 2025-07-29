@@ -5,9 +5,11 @@ import EnergyCard from '../components/EnergyCard';
 import App from '../App'; // 你的钱包连接逻辑
 
 const dummyData = [
-  { title: '光伏项目 #1', price: 1.2, location: '杭州' },
-  { title: '光伏项目 #2', price: 0.9, location: '广州' },
-  { title: '光伏项目 #3', price: 1.5, location: '上海' },
+  { title: 'Photovoltaic Power Project #1', price: 1.2, location: 'Hangzhou' },
+  { title: 'Photovoltaic Power Project #2', price: 0.9, location: 'Tianjin' },
+  { title: 'Photovoltaic Power Project #3', price: 1.5, location: 'Shanghai' },
+  { title: 'Photovoltaic Power Project #4', price: 3.0, location: 'Guangzhou' },
+  { title: 'Photovoltaic Power Project #5', price: 1.8, location: 'Beijing' },
 ];
 
 const Market = () => {
@@ -16,7 +18,7 @@ const Market = () => {
       <Navbar />
       <MarketHero />
       <Container maxW="6xl" py={10}>
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap="40px" spacing={10}>
           {dummyData.map((item, idx) => (
             <EnergyCard key={idx} {...item} />
           ))}

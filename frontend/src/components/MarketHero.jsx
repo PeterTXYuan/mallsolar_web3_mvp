@@ -4,10 +4,10 @@ const MarketHero = () => {
   return (
     <Box textAlign="center" py={12} bg="gray.100">
       <Heading as="h1" size="xl" mb={4}>
-        去中心化电力市场
+        Decentralized power market.
       </Heading>
       <Text fontSize="lg" color="gray.600">
-        发现、购买、出售绿色能源 — 让能源更自由
+        Discover, purchase, and sell green energy — making energy more accessible.
       </Text>
     </Box>
   );

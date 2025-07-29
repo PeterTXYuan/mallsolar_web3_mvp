@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   const connect = async () => {
-    if (!window.ethereum) return alert("请先安装 MetaMask 插件");
+    if (!window.ethereum) return alert("Please download MetaMask");
 
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
@@ -36,21 +36,21 @@ function App() {
       setContract(c);
     } catch (err) {
       console.error(err);
-      alert("连接失败: " + err.message);
+      alert("Connection failed: " + err.message);
     }
   };
 
   const register = async () => {
     if (!location || !energy) {
-      return alert("请填写所有字段");
+      return alert("Please fill out every blank");
     }
     try {
       const tx = await contract.registerAsset(location, Number(energy));
       await tx.wait();
-      alert("✅ 资产已成功注册！");
+      alert("✅ Asset has been successfully registered!");
     } catch (err) {
       console.error(err);
-      alert("注册失败: " + err.message);
+      alert("Registration failed: " + err.message);
     }
   };
 
@@ -67,31 +67,31 @@ function App() {
 
       {account ? (
         <VStack spacing={4}>
-          <Text color="gray.600">已连接: {account}</Text>
+          <Text color="gray.600">Connected: {account}</Text>
 
           <Input
-            placeholder="位置（Location）"
+            placeholder="Location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
 
           <Input
-            placeholder="能源值 (kWh)"
+            placeholder="Power (kWh)"
             value={energy}
             onChange={(e) => setEnergy(e.target.value)}
           />
 
           <Button colorScheme="teal" onClick={register}>
-            注册资产
+            Register assets
           </Button>
 
           <Button as={Link} to="/market" colorScheme="blue" variant="outline">
-            前往市场页面
+            Go to Market tab
           </Button>
         </VStack>
       ) : (
         <Button colorScheme="blue" onClick={connect}>
-          连接 MetaMask 钱包
+          Connect to MetaMask Wallet
         </Button>
       )}
 
