@@ -6,8 +6,11 @@ import {
   Heading,
   VStack,
   Text,
+  IconButton
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import { FaArrowLeft } from "react-icons/fa6";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,6 +36,25 @@ const Login = () => {
       bg="gray.50"
       px={4}
     >
+      <IconButton
+        aria-label="Go Back"
+        position="absolute"
+        top="4"
+        left="4"
+        size="lg"
+        boxSize={12}
+        colorScheme="teal"
+        variant="ghost"
+        onClick={() => navigate(-1)}
+        _hover={{
+          bg: 'teal.100',
+          transform: 'scale(1.15)',
+        }}
+        transition="all 0.3s ease"
+      >
+        <FaArrowLeft />
+      </IconButton>
+
       <Box
         bg="white"
         p={8}
