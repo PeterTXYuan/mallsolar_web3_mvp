@@ -1,52 +1,3 @@
-// import {
-//   Box,
-//   Heading,
-//   Text,
-//   Button,
-//   VStack,
-//   Container,
-//   Image,
-//   HStack
-// } from "@chakra-ui/react";
-// import { Link } from "react-router-dom";
-// import Navbar from "../components/Navbar";
-
-// const Home = () => {
-//   return (
-//     <Box
-//       minH="100vh"
-//       bgImage="url('/solar.jpg')"
-//       bgSize="cover"
-//       bgPosition="center"
-//       color="white"
-//     >
-//       <Navbar />
-
-//       <Container maxW="6xl" py={20}>
-//         <VStack spacing={8} align="start">
-//           <Heading fontSize={{ base: "3xl", md: "5xl" }} marginBottom="20px">
-//             Empowering the Global Solar Energy Market
-//           </Heading>
-//           <Text fontSize="lg" maxW="xl" marginBottom="20px">
-//             Join a decentralized ecosystem where energy assets are tokenized and traded
-//             transparently, securely, and sustainably.
-//           </Text>
-//           <HStack spacing={4}>
-//             <Button colorScheme="teal" as={Link} to="/market">
-//               Enter Marketplace
-//             </Button>
-//             <Button variant="outline" colorScheme="teal" bg="white">
-//               Learn More
-//             </Button>
-//           </HStack>
-//         </VStack>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default Home;
-
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import {
@@ -56,6 +7,9 @@ import {
   VStack,
   Button,
   HStack,
+  SimpleGrid,
+  Image,
+  Stack
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -170,6 +124,70 @@ export default function Home() {
           ))}
           </HStack>
 
+      </Box>
+
+      {/* Section 1: Our Mission */}
+      <Box bg="gray.50" py={20} px={{ base: 6, md: 20 }}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} alignItems="center">
+          <Image src="/something.jpg" alt="Solar Panels" borderRadius="md" />
+          <VStack align="start" spacing={4}>
+            <Heading color="teal.600">Our Mission</Heading>
+            <Text color="gray.700" fontSize="lg">
+              Empower communities worldwide to generate, trade, and consume clean energy through a transparent, decentralized marketplace powered by blockchain technology.
+            </Text>
+          </VStack>
+        </SimpleGrid>
+      </Box>
+
+      {/* Section 2: Why MallSolar */}
+      <Box bg="white" py={20} px={{ base: 6, md: 20 }}>
+        <Heading textAlign="center" mb={10} color="teal.600">Why MallSolar?</Heading>
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+          <Box textAlign="center" p={6} shadow="md" borderRadius="md">
+            <Heading size="md" mb={3} color="gray.800">Decentralized Trading</Heading>
+            <Text color="gray.600">Trade energy directly without intermediaries, reducing costs and increasing transparency.</Text>
+          </Box>
+          <Box textAlign="center" p={6} shadow="md" borderRadius="md">
+            <Heading size="md" mb={3} color="gray.800">Smart Contract Security</Heading>
+            <Text color="gray.600">All transactions are automated and secured through blockchain-based smart contracts.</Text>
+          </Box>
+          <Box textAlign="center" p={6} shadow="md" borderRadius="md">
+            <Heading size="md" mb={3} color="gray.800">Sustainable & Green</Heading>
+            <Text color="gray.600">Promoting renewable energy adoption and sustainable consumption globally.</Text>
+          </Box>
+        </SimpleGrid>
+      </Box>
+
+      {/* Section 3: Advantages */}
+      <Box bgGradient="to-r" gradientFrom="teal.50" gradientTo="blue.50" py={20} px={{ base: 6, md: 20 }}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} alignItems="center" mb={16}>
+          <Image src="/smart-contract.jpg" alt="Smart Contract" borderRadius="md" />
+          <Stack spacing={4}>
+            <Heading color="teal.600">Transparent Energy Market</Heading>
+            <Text color="gray.700">
+              Our blockchain-powered marketplace ensures every transaction is verifiable, secure, and immutable.
+            </Text>
+          </Stack>
+        </SimpleGrid>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} alignItems="center">
+          <Stack spacing={4}>
+            <Heading color="teal.600">Global Community Impact</Heading>
+            <Text color="gray.700">
+              By connecting energy producers and consumers worldwide, we enable fair access to clean energy.
+            </Text>
+          </Stack>
+          <Image src="/global-community.jpg" alt="Global Community" borderRadius="md" />
+        </SimpleGrid>
+      </Box>
+
+      {/* Section 4: Call to Action */}
+      <Box bg="teal.600" py={16} textAlign="center" color="white">
+        <Heading mb={4}>Join the Energy Revolution</Heading>
+        <Text fontSize="lg" mb={8}>Be part of a global movement towards a cleaner, decentralized future.</Text>
+        <Button as={RouterLink} to="/market" size="lg" colorScheme="yellow">
+          Go to Marketplace
+        </Button>
       </Box>
 
       
