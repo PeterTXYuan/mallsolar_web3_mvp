@@ -139,19 +139,20 @@ export default function Home() {
         </SimpleGrid>
       </Box>
 
+
       {/* Section 2: Why MallSolar */}
-      <Box bg="white" py={20} px={{ base: 6, md: 20 }}>
+      <Box bgGradient="to-b" gradientFrom="gray.50" gradientTo="teal.50" py={20} px={{ base: 6, md: 20 }}>
         <Heading textAlign="center" mb={10} color="teal.600">Why MallSolar?</Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
-          <Box textAlign="center" p={6} shadow="md" borderRadius="md">
+          <Box bgColor="cyan.50" textAlign="center" p={6} shadow="md" borderRadius="md">
             <Heading size="md" mb={3} color="gray.800">Decentralized Trading</Heading>
             <Text color="gray.600">Trade energy directly without intermediaries, reducing costs and increasing transparency.</Text>
           </Box>
-          <Box textAlign="center" p={6} shadow="md" borderRadius="md">
+          <Box bgColor="teal.50" textAlign="center" p={6} shadow="md" borderRadius="md">
             <Heading size="md" mb={3} color="gray.800">Smart Contract Security</Heading>
             <Text color="gray.600">All transactions are automated and secured through blockchain-based smart contracts.</Text>
           </Box>
-          <Box textAlign="center" p={6} shadow="md" borderRadius="md">
+          <Box bgColor="green.50" textAlign="center" p={6} shadow="md" borderRadius="md">
             <Heading size="md" mb={3} color="gray.800">Sustainable & Green</Heading>
             <Text color="gray.600">Promoting renewable energy adoption and sustainable consumption globally.</Text>
           </Box>
@@ -159,7 +160,7 @@ export default function Home() {
       </Box>
 
       {/* Section 3: Advantages */}
-      <Box bgGradient="to-r" gradientFrom="teal.50" gradientTo="blue.50" py={20} px={{ base: 6, md: 20 }}>
+      <Box bg="teal.50" py={20} px={{ base: 6, md: 20 }}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} alignItems="center" mb={16}>
           <Image src="/smart-contract.jpg" alt="Smart Contract" borderRadius="md" />
           <Stack spacing={4}>

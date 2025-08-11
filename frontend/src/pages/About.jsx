@@ -27,7 +27,7 @@ export default function About() {
       </Box>
 
       {/* Section 2 */}
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} px={{ base: 6, md: 20 }} py={10} alignItems="center">
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} px={{ base: 6, md: 20 }} py={10} alignItems="center" bgGradient="to-b" gradientFrom="gray.100" gradientTo="white">
         <Image
           src="/solar.jpg"
           alt="Solar panels"
@@ -49,6 +49,18 @@ export default function About() {
         </VStack>
       </SimpleGrid>
 
+      <Box overflow="hidden" lineHeight="0">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style={{ height: '80px', width: '100%' }}
+        >
+          <path
+            d="M0,0 L0,100 Q250,0 500,100 L500,0 Z"
+            style={{ stroke: 'none', fill: 'white' }} // blue.300
+          ></path>
+        </svg>
+      </Box>
       {/* Section 3 */}
       {/* Team Members */}
 
